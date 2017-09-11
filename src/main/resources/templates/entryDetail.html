@@ -10,8 +10,7 @@
 
 <div class="container">
     <div class="starter-template">
-        <a th:href="@{/user/journal/entry/new}">New Entry</a>
-        <div th:each="entry : ${entries}" class="entry-container">
+        <div class="entry-container">
             <span th:text="${entry.getTitle()}" class="entry-title"></span>
             <p th:text="${entry.getContent()}" class="entry-content"></p>
         </div>

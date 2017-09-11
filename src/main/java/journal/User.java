@@ -9,7 +9,8 @@ import java.util.List;
 
 public class User implements UserDetails{
     @Id
-    private String id;
+    public String id;
+
     private String password;
     private String username;
     private List<SimpleGrantedAuthority> authorities;
@@ -26,14 +27,6 @@ public class User implements UserDetails{
     public void assignAsAdmin() {
         authorities = new ArrayList<SimpleGrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public void setAuthorities(List<SimpleGrantedAuthority> auths) {

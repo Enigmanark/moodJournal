@@ -19,14 +19,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.userDetailsService(userLookupService);
 
         http.authorizeRequests()
-                .antMatchers("/").permitAll() //Home Page
-                .antMatchers("/about").permitAll() //About page
-                .antMatchers("/contact").permitAll()
-                .antMatchers("/user/new").permitAll()
-                .antMatchers("/login?registered").permitAll()
-                .antMatchers("/user/journal").hasAuthority("ROLE_USER").and()
-                .formLogin().loginPage("/login").permitAll().and()
-                .formLogin().successForwardUrl("/").and()
+                .antMatchers("/", "/about", "/contact", "/user/new", "/login?registered").permitAll()
+                .antMatchers("/user/journal/**").hasRole("USER")
+                .and()
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .formLogin().successForwardUrl("/")
+                .and()
                 .logout().permitAll()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", HttpMethod.GET.toString()))
                 .invalidateHttpSession(true);

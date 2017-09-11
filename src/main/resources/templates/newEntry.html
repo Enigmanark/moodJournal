@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/header :: header"></th:block>
+
+<body>
+    <th:block th:include="fragments/headMenu :: headMenu"></th:block>
+
+    <div id="content">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <h1>New Entry</h1>
+            <form action="#" th:action="@{/user/journal/entry/new}" th:object="${entry}" method="post">
+               <fieldset>
+                   <span>Title:</span>
+                   <br/>
+                   <input type="text" th:field="*{title}"/>
+                   <br/>
+                   <span>Entry Content:</span>
+                   <br/>
+                   <textarea rows="25" cols="100" th:field="*{content}"></textarea>
+                   <br/>
+                   <input type="submit" value="Submit"/>
+               </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+
+</html>

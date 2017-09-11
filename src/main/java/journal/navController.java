@@ -15,11 +15,7 @@ public class NavController {
         return "home";
     }
 
-    @GetMapping("/user/journal")
-    public String journal(Model model) {
-        model.addAttribute("title", "Journal - " + title);
-        return "journal";
-    }
+    //Journal is mapped to PostController
 
     @GetMapping("/contact")
     public String contact(Model model) {
