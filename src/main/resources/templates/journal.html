@@ -13,9 +13,9 @@
         <a th:href="@{/user/journal/entry/new}">New Entry</a>
         <br/>
         <br/>
-        <div th:each="entry : ${entries}" class="entry-container">
+        <th:block th:each="entry : ${entries}">
             <th:block th:include="fragments/entry :: entry"></th:block>
-        </div>
+        </th:block>
     </div>
 </div>
 

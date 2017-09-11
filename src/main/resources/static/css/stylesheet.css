@@ -1,0 +1,10 @@
+.entry-container {
+    padding: 10px;
+    background-color: ivory;
+    margin-bottom: 10;
+}
+
+.mood-tag {
+    padding: 2px;
+    background-color: orange;
+}

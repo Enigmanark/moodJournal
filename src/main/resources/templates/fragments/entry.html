@@ -3,15 +3,17 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="entry">
+<div  class="entry-container">
 
     <a th:with="idAddress=${'/user/journal/entry?id='}" th:href="@{ ${idAddress + entry.id} }">
         <span th:text="${entry.getTitle()}" class="entry-title"></span>
     </a>
     <p th:text="${entry.getContent()}" class="entry-content"></p>
     <th:block th:each="mood : ${entry.getMoods()}">
-        <span th:text="${mood}"></span>
+        <span class="mood-tag" th:text="${mood}"></span>
     </th:block>
     <br/><br/>
+</div>
 </div>
 </body>
 </html>
