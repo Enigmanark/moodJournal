@@ -11,9 +11,10 @@
 <div class="container">
     <div class="starter-template">
         <a th:href="@{/user/journal/entry/new}">New Entry</a>
+        <br/>
+        <br/>
         <div th:each="entry : ${entries}" class="entry-container">
-            <span th:text="${entry.getTitle()}" class="entry-title"></span>
-            <p th:text="${entry.getContent()}" class="entry-content"></p>
+            <th:block th:include="fragments/entry :: entry"></th:block>
         </div>
     </div>
 </div>

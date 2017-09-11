@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="entry">
+
+    <span th:text="${entry.getTitle()}" class="entry-title"></span>
+    <p th:text="${entry.getContent()}" class="entry-content"></p>
+    <th:block th:each="mood : ${entry.getMoods()}">
+        <span th:text="${mood}"></span>
+    </th:block>
+
+</div>
+</body>
+</html>

@@ -10,10 +10,7 @@
 
 <div class="container">
     <div class="starter-template">
-        <div class="entry-container">
-            <span th:text="${entry.getTitle()}" class="entry-title"></span>
-            <p th:text="${entry.getContent()}" class="entry-content"></p>
-        </div>
+        <th:block th:include="fragments/entry :: entry"></th:block>
     </div>
 </div>
 
