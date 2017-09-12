@@ -11,7 +11,9 @@
     <span th:text="${entry.getDateCreated()}"></span>
     <p th:text="${entry.getContent()}" class="entry-content"></p>
     <th:block th:each="mood : ${entry.getMoods()}">
-        <span class="mood-tag" th:text="${mood}"></span>
+        <a th:with="moodAddress=${'/user/journal?mood='}" th:href="@{ ${moodAddress + mood} }">
+            <span class="mood-tag" th:text="${mood}"></span>
+        </a>
     </th:block>
     <br/><br/>
 </div>

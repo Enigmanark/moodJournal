@@ -26,10 +26,16 @@ public class PostController {
         Display all journal entries
      */
     @GetMapping("/user/journal")
-    public String posts(Model model) throws Exception {
+    public String posts(@RequestParam(value="mood", required = false) String mood,
+            Model model) throws Exception {
         try {
             String id = getAuthorId();
             List<Entry> entries = entryRepo.findByAuthorId(id);
+
+            if(mood != null) {
+                entries = getEntriesWithMood(entries, mood);
+            }
+
             Collections.sort(entries);
             Collections.reverse(entries);
             model.addAttribute("entries", entries);
@@ -151,5 +157,23 @@ public class PostController {
             }
 
         }
+    }
+
+    /*
+        This is a helper method where you pass in a bunch of entries and a Moods in the form of a string, and it
+        goes through all the entries and also the moods in the entry and only returns the entries that contain the
+        passed in mood.
+     */
+
+    private List<Entry> getEntriesWithMood(List<Entry> entries, String moodString) {
+        Moods mood = Moods.valueOf(moodString);
+        ArrayList<Entry> entriesWithMood = new ArrayList<Entry>();
+
+        for(Entry entry : entries) {
+            for(Moods m : entry.getMoods()) {
+                if(m == Moods.valueOf(moodString)) entriesWithMood.add(entry);
+            }
+        }
+        return entriesWithMood;
     }
 }
