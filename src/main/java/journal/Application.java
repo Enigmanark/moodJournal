@@ -7,7 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class Application {
     public final static String TITLE = "Mood Journal";
-    public final static String VERSION = "0.6.8 Alpha";
+    public final static String VERSION = "0.7.3 Alpha";
     public static void main(String[] args) {
         ConfigurableApplicationContext app = SpringApplication.run(Application.class, args);
 
