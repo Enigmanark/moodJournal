@@ -8,6 +8,7 @@
     <a th:with="idAddress=${'/user/journal/entry?id='}" th:href="@{ ${idAddress + entry.id} }">
         <span th:text="${entry.getTitle()}" class="entry-title"></span>
     </a>
+    <span th:text="${entry.getDateCreated()}"></span>
     <p th:text="${entry.getContent()}" class="entry-content"></p>
     <th:block th:each="mood : ${entry.getMoods()}">
         <span class="mood-tag" th:text="${mood}"></span>

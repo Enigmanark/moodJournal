@@ -1,5 +1,6 @@
 package journal;
 
+import com.mongodb.client.model.Sorts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -28,6 +30,8 @@ public class PostController {
         try {
             String id = getAuthorId();
             List<Entry> entries = entryRepo.findByAuthorId(id);
+            Collections.sort(entries);
+            Collections.reverse(entries);
             model.addAttribute("entries", entries);
             return "journal";
         } catch(Exception e) {
@@ -101,6 +105,7 @@ public class PostController {
             entry.setMoods(moods);
 
             entry.setAuthorId(getAuthorId());
+            entry.setDateCreated();
             entryRepo.save(entry);
             String id = entry.id;
             return "redirect:/user/journal/entry?id=" + id;

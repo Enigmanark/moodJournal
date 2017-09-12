@@ -2,17 +2,27 @@ package journal;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
 import java.util.List;
 
-public class Entry {
+public class Entry implements Comparable<Entry>{
     @Id
     public String id;
 
     private String title;
     private String authorId;
     private String content;
+    private Date dateCreated;
 
     private List<Moods> moods;
+
+    public void setDateCreated() {
+        dateCreated = new Date();
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
 
     public List<Moods> getMoods() {
         return moods;
@@ -57,5 +67,10 @@ public class Entry {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public int compareTo(Entry entry) {
+        return dateCreated.compareTo(entry.getDateCreated());
     }
 }
